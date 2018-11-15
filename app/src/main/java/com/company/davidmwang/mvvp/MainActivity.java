@@ -2,10 +2,13 @@ package com.company.davidmwang.mvvp;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,9 +20,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.company.davidmwang.fragments.OneFragment;
+import com.company.davidmwang.fragments.ThreeFragment;
+import com.company.davidmwang.fragments.TwoFragment;
 import com.company.davidmwang.models.Country;
 import com.company.davidmwang.views.MainActivityView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
@@ -35,7 +42,6 @@ public class MainActivity extends AppCompatActivity
 
         //load the view here
 
-
         mainActivityView= ViewModelProviders.of(this).get(MainActivityView.class);
         mainActivityView.country.observe(this, new Observer<List<Country>>() {
             @Override
@@ -50,8 +56,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+              Intent intent=new Intent(MainActivity.this,TabLayout.class);
+              startActivity(intent);
             }
         });
 
